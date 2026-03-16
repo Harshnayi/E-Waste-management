@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3%;
+
+    --primary: 158 64% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 3%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 158 64% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 158 64% 40%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens for Green/White/Black */
+    --emerald: 142 71% 45%;
+    --surface: 0 0% 100%;
+    --surface-elevated: 0 0% 100%;
+
+    --footer-bg: 0 0% 4%;
+    --footer-text: 0 0% 100%;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(142, 71%, 45%) 0%, hsl(142, 80%, 35%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .card-elevated {
+    @apply bg-white border border-border shadow-md transition-all duration-300;
+  }
+
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+  }
+
+  .mesh-gradient {
+    background-color: #ffffff;
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(158, 64%, 40%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, hsla(142, 71%, 45%, 0.1) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, hsla(158, 64%, 40%, 0.15) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, hsla(142, 71%, 45%, 0.1) 0px, transparent 50%);
+  }
+
+  .sih-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-[10px] font-black uppercase tracking-widest text-primary animate-pulse;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+.hover-scale {
+  @apply transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98];
+}
+
+button:not([disabled]) {
+  @apply transition-all duration-200;
+}
+
+button:not([disabled]):hover {
+  @apply -translate-y-0.5 shadow-md;
+}
+
+button:not([disabled]):active {
+  @apply translate-y-0 scale-95;
+}
